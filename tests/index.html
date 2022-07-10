@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../dist/index-umd.js"></script>
+</head>
+
+<body>
+  <script>
+    class Visitor extends antlrv4_js_html.Visitor {
+      constructor() {
+        super()
+      }
+
+      visitTerminal(ctx) {
+        let text = ctx.getText()
+        console.log(text)
+        return this.visitChildren(ctx);
+      }
+    }
+
+    antlrv4_js_html.transform(`<div><span id="12312" checked>2</span><p>1<span></span></p></div>`, new Visitor())
+  </script>
+</body>
+
+</html>
